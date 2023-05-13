@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import SearchAppBar from './components/SearchBar';
+import { BaseColaboradores } from './database/data';
+import MyTable from './components/MyTable';
+
+
+
 
 function App() {
+  const [colaboradores, setColaboradores] = useState(BaseColaboradores)
+  const [searchTerm, setSearchTerm] = useState("")
+  
+
+  const handleSearchChange = (value) => {
+  setSearchTerm(value);
+  
+};
+
+console.log("term",searchTerm)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchAppBar onSearchChange={handleSearchChange}/>
+      <MyTable colaboradores={colaboradores} searchTerm={searchTerm}/>
+        
     </div>
   );
 }
