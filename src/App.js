@@ -18,11 +18,10 @@ function App() {
   };
 
   const agregarColaborador = (nombre1, correo1) => {
-    setNombre(nombre1);
-    setCorreo(correo1);
+   
     let nuevoColaborador = {
-      nombre: nombre,
-      correo: correo,
+      nombre: nombre1,
+      correo: correo1,
     };
     setColaboradores([...colaboradores, nuevoColaborador]);
   };
