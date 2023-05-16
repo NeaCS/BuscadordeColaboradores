@@ -1,30 +1,42 @@
-
-import { useState } from 'react';
-import './App.css';
-import SearchAppBar from './components/SearchBar';
-import { BaseColaboradores } from './database/data';
-import MyTable from './components/MyTable';
-
-
-
+import { useState } from "react";
+import "./App.css";
+import SearchAppBar from "./components/SearchBar";
+import { BaseColaboradores } from "./database/data";
+import MyTable from "./components/MyTable";
+import { Grid } from "@mui/material";
+import { Grid3x3 } from "@mui/icons-material";
+import AddColab from "./components/AddColab";
 
 function App() {
-  const [colaboradores, setColaboradores] = useState(BaseColaboradores)
-  const [searchTerm, setSearchTerm] = useState("")
-  
+  const [colaboradores, setColaboradores] = useState(BaseColaboradores);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [nombre, setNombre] = useState();
+  const [correo, setCorreo] = useState();
 
   const handleSearchChange = (value) => {
-  setSearchTerm(value);
-  
-};
+    setSearchTerm(value);
+  };
 
-console.log("term",searchTerm)
+  const agregarColaborador = (nombre1, correo1) => {
+    setNombre(nombre1);
+    setCorreo(correo1);
+    let nuevoColaborador = {
+      nombre: nombre,
+      correo: correo,
+    };
+    setColaboradores([...colaboradores, nuevoColaborador]);
+  };
+
   return (
-    <div className="App">
-      <SearchAppBar onSearchChange={handleSearchChange}/>
-      <MyTable colaboradores={colaboradores} searchTerm={searchTerm}/>
-        
-    </div>
+    <Grid className="App" container>
+      <Grid item xs={6} justifyContent={"center"}>
+        <SearchAppBar onSearchChange={handleSearchChange} />
+        <MyTable colaboradores={colaboradores} searchTerm={searchTerm} />
+      </Grid>
+      <Grid item xs={6}>
+        <AddColab agregarColaborador={agregarColaborador} />
+      </Grid>
+    </Grid>
   );
 }
 
