@@ -24,7 +24,7 @@ export default function MyTable(props) {
   return (
       <TableContainer component={Paper} style={{marginTop:"10%"}}>
         <Table aria-label="simple table">
-          <TableHead back>
+          <TableHead style={{background:"#fa0a32"}}>
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell align="center">Nombre</TableCell>
