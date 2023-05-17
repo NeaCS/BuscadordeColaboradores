@@ -15,6 +15,7 @@ export default function MyTable(props) {
   const colaboradoresFiltrados = colaboradores.filter((colab) => {
     const searchValue = searchTerm.toLowerCase();
     return (
+      //Si no encuentra criterio de filtrado, no filtra y deja el array completo
       colab.nombre.toLowerCase().includes(searchValue) ||
       colab.correo.toLowerCase().includes(searchValue) 
     );
