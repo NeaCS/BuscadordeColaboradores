@@ -10,8 +10,6 @@ import AddColab from "./components/AddColab";
 function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
   const [searchTerm, setSearchTerm] = useState("");
-  const [nombre, setNombre] = useState();
-  const [correo, setCorreo] = useState();
 
   const handleSearchChange = (value) => {
     setSearchTerm(value);

@@ -12,9 +12,13 @@ import * as React from "react";
 export default function MyTable(props) {
   const { searchTerm, colaboradores } = props;
 
-  const colaboradoresFiltrados = colaboradores.filter(
-    (colab) => colab.nombre === searchTerm
-  );
+  const colaboradoresFiltrados = colaboradores.filter((colab) => {
+    const searchValue = searchTerm.toLowerCase();
+    return (
+      colab.nombre.toLowerCase().includes(searchValue) ||
+      colab.correo.toLowerCase().includes(searchValue) 
+    );
+  });
 
   return (
       <TableContainer component={Paper} style={{marginTop:"10%"}}>
