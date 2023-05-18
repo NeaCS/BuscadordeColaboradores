@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddColab = ({ agregarColaborador }) => {
   const [nombre, setNombre] = useState("");
@@ -7,9 +8,12 @@ const AddColab = ({ agregarColaborador }) => {
 
   const agregarColaboradorAdd = (e) => {
     e.preventDefault();
-    agregarColaborador(nombre, correo);
+    if (nombre === "" || correo === "") {
+      toast.error("Debe completar todos los campos", {hideProgressBar: true, theme: "colored"} );
+    } else {agregarColaborador(nombre, correo);
      setNombre("");
-    setCorreo(""); 
+    setCorreo(""); }
+    
   };
   return (
     <div
@@ -41,12 +45,13 @@ const AddColab = ({ agregarColaborador }) => {
         />
         <Button
           onClick={agregarColaboradorAdd}
-          sx={{ marginTop: "0.7%", marginLeft: "2%" }}
+          sx={{ marginTop: "0.7%", marginLeft: "2%", backgroundColor:"#fa0a32" }}
           variant="contained"
         >
           Agregar
         </Button>
       </Box>
+      <ToastContainer  ></ToastContainer>
     </div>
   );
 };

@@ -5,7 +5,10 @@ import { BaseColaboradores } from "./database/data";
 import MyTable from "./components/MyTable";
 import { Grid } from "@mui/material";
 import { Grid3x3 } from "@mui/icons-material";
-import AddColab from "./components/AddColab";
+import AddColab from "./components/AddColab";  
+import 'react-toastify/dist/ReactToastify.css';   import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
@@ -28,10 +31,12 @@ function App() {
     <Grid className="App" container>
       <Grid item xs={6} justifyContent={"center"}>
         <SearchAppBar onSearchChange={handleSearchChange} />
+        
         <MyTable colaboradores={colaboradores} searchTerm={searchTerm} />
       </Grid>
       <Grid item xs={6}>
         <AddColab agregarColaborador={agregarColaborador} />
+        
       </Grid>
     </Grid>
   );
